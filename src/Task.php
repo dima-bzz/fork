@@ -87,7 +87,10 @@ class Task
         return $this;
     }
 
-    public function execute(): string | bool
+    /**
+     * @return string|bool
+     */
+    public function execute()
     {
         $output = ($this->callable)();
 
@@ -98,7 +101,10 @@ class Task
         return self::SERIALIZATION_TOKEN . serialize($output);
     }
 
-    public function output(): mixed
+    /**
+     * @return mixed
+     */
+    public function output()
     {
         foreach ($this->connection->read() as $output) {
             $this->output .= $output;
@@ -143,7 +149,10 @@ class Task
         return false;
     }
 
-    public function triggerSuccessCallback(): mixed
+    /**
+     * @return mixed
+     */
+    public function triggerSuccessCallback()
     {
         if (! $this->successCallback) {
             return null;
