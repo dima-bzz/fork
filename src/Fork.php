@@ -51,7 +51,7 @@ class Fork
         return $this;
     }
 
-    public function concurrent(int $concurrent): self
+    public function concurrent(?int $concurrent): self
     {
         $this->concurrent = $concurrent;
 
