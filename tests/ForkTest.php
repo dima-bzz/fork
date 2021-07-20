@@ -24,7 +24,7 @@ class ForkTest extends TestCase
         $results = Fork::new()
             ->run(
                 fn () => 1 + 1,
-                fn () => 2 + 2,
+                fn () => 2 + 2
             );
 
         $this->assertEquals([2, 4], $results);
@@ -50,7 +50,7 @@ class ForkTest extends TestCase
                     sleep(1);
 
                     return Carbon::now()->second;
-                },
+                }
             );
 
         $this->assertEquals($results[0], $results[1]);
@@ -65,7 +65,7 @@ class ForkTest extends TestCase
                 ...array_fill(
                     start_index: 0,
                     count: 20,
-                    value: fn () => usleep(100_000),
+                    value: fn () => usleep(100_000)
                 ) // 1/10th of a second each
             );
 
@@ -106,7 +106,7 @@ class ForkTest extends TestCase
                     $globalAfterValue = 1;
 
                     return $globalAfterValue;
-                },
+                }
             );
 
         $this->assertEquals([1], $results);
@@ -147,7 +147,7 @@ class ForkTest extends TestCase
             ->run(
                 fn () => file_get_contents('https://stitcher.io/rss'),
                 fn () => file_get_contents('https://sebastiandedeyne.com/index.xml'),
-                fn () => file_get_contents('https://rubenvanassche.com/rss/'),
+                fn () => file_get_contents('https://rubenvanassche.com/rss/')
             );
 
         $this->assertCount(3, $result);
@@ -159,7 +159,7 @@ class ForkTest extends TestCase
         $result = Fork::new()
             ->run(
                 fn () => new DateTime('2021-01-01'),
-                fn () => new DateTime('2021-01-02'),
+                fn () => new DateTime('2021-01-02')
             );
 
         $this->assertEquals('2021-01-01', $result[0]->format('Y-m-d'));
