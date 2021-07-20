@@ -65,7 +65,7 @@ class ForkTest extends TestCase
                 ...array_fill(
                     0,
                     20,
-                   fn () => usleep(100_000)
+                    fn () => usleep(100_000)
                 ) // 1/10th of a second each
             );
 
