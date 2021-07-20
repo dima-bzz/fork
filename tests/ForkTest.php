@@ -63,9 +63,9 @@ class ForkTest extends TestCase
         Fork::new()
             ->run(
                 ...array_fill(
-                    start_index: 0,
-                    count: 20,
-                    value: fn () => usleep(100_000)
+                    0,
+                    20,
+                   fn () => usleep(100_000)
                 ) // 1/10th of a second each
             );
 
@@ -118,9 +118,12 @@ class ForkTest extends TestCase
         $value = 0;
 
         Fork::new()
-            ->before(parent: function () use (&$value) {
-                $value++;
-            })
+            ->before(
+                null,
+                function () use (&$value) {
+                    $value++;
+                }
+            )
             ->run(fn () => 1, fn () => 2);
 
         $this->assertEquals(2, $value);
@@ -132,9 +135,12 @@ class ForkTest extends TestCase
         $value = 0;
 
         Fork::new()
-            ->after(parent: function () use (&$value) {
-                $value++;
-            })
+            ->after(
+                null,
+                function () use (&$value) {
+                    $value++;
+                }
+            )
             ->run(fn () => 1, fn () => 2);
 
         $this->assertEquals(2, $value);
@@ -171,7 +177,8 @@ class ForkTest extends TestCase
     {
         Fork::new()
             ->after(
-                parent: function (int $i) {
+                null,
+                function (int $i) {
                     $this->assertEquals(1, $i);
                 },
             )
