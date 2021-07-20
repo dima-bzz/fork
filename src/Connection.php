@@ -3,7 +3,6 @@
 namespace Spatie\Fork;
 
 use Generator;
-use Socket;
 
 class Connection
 {
