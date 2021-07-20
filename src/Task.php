@@ -116,7 +116,7 @@ class Task
 
         $output = $this->output;
 
-        if (str_starts_with($output, self::SERIALIZATION_TOKEN)) {
+        if (strpos($output, self::SERIALIZATION_TOKEN) === 0) {
             $output = unserialize(
                 substr($output, strlen(self::SERIALIZATION_TOKEN))
             );
