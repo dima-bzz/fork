@@ -1,13 +1,20 @@
 {
-    "name": "spatie/fork",
+    "name": "dima-bzz/fork",
     "description": "A lightweight solution for running code concurrently in PHP",
     "keywords": [
+        "dima-bzz",
         "spatie",
         "fork"
     ],
-    "homepage": "https://github.com/spatie/fork",
+    "homepage": "https://github.com/dima-bzz/fork",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Dmitry Mazurov",
+            "email": "dimabzz@gmail.com",
+            "homepage": "https://github.com/dima-bzz",
+            "role": "Developer"
+        },
         {
             "name": "Brent Roose",
             "email": "brent@spatie.be",
