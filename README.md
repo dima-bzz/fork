@@ -1,9 +1,9 @@
 # A lightweight solution for running PHP code concurrently
 
-[![Latest Version on Packagist](https://badgen.net/packagist/v/dima-bzz/fork?cache=300)](https://packagist.org/packages/dima-bzz/fork)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/dima-bzz/fork)](https://packagist.org/packages/dima-bzz/fork)
 [![Tests](https://github.com/dima-bzz/fork/actions/workflows/run-tests.yml/badge.svg)](https://github.com/dima-bzz/fork/actions/workflows/run-tests.yml)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/dima-bzz/fork/Check%20&%20fix%20styling?label=code%20style)](https://github.com/dima-bzz/fork/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
-[![Total Downloads](https://badgen.net/packagist/dt/dima-bzz/fork?cache=300)](https://packagist.org/packages/dima-bzz/fork)
+[![Total Downloads](https://img.shields.io/packagist/dt/dima-bzz/fork)](https://packagist.org/packages/dima-bzz/fork)
 
 This package makes it easy to run PHP concurrently. Behind the scenes, concurrency is achieved by forking the main PHP process to one or more child tasks.
 
