@@ -15,12 +15,22 @@ class Connection
     /** @var float */
     protected $timeout;
 
-    protected function __construct($socket, int $bufferSize = 1024, float $timeout = 0.1)
+    /** @var int */
+    protected $timeoutSeconds;
+
+    /** @var int */
+    protected $timeoutMicroseconds;
+
+    protected function __construct($socket, int $bufferSize = 1024, float $timeout = 0.0001)
     {
         $this->socket = $socket;
         $this->bufferSize = $bufferSize;
         $this->timeout = $timeout;
         socket_set_nonblock($this->socket);
+
+        $this->timeoutSeconds = floor($this->timeout);
+
+        $this->timeoutMicroseconds = ($this->timeout * 1_000_000) - ($this->timeoutSeconds * 1_000_000);
     }
 
     /**
@@ -56,7 +66,7 @@ class Connection
 
             $except = null;
 
-            $selectResult = socket_select($read, $write, $except, $this->timeout);
+            $selectResult = socket_select($read, $write, $except,  $this->timeoutSeconds, $this->timeoutMicroseconds);
 
             if ($selectResult === false) {
                 break;
@@ -91,7 +101,7 @@ class Connection
 
             $except = null;
 
-            $selectResult = socket_select($read, $write, $except, $this->timeout);
+            $selectResult = socket_select($read, $write, $except,  $this->timeoutSeconds, $this->timeoutMicroseconds);
 
             if ($selectResult === false) {
                 break;
